@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+</style>
+<body>
+<div id="app">
+</div>
+<script>
+  function Person(name) {
+  	this.name = name
+    this.ss = function () {
+      console.info(this.name)
+    }
+  	
+  }
+  Person.prototype = {
+   constuctor: Person,
+    sing: function (){
+      console.info("sing")
+    },
+    movie: function(){
+      console.info("movie")
+    }
+  } 
+
+  // (function() { console.log(this)},())
+
+  function aaa(a,b){
+    console.log(this)
+    return sum = a + b
+  } 
+  aaa(1,2)
+
+
+  var p = new Person("alen")
+  console.info(p)
+  console.dir(Person)
+  console.info(Person.prototype)
+  console.info(p.__proto__ === Person.prototype)
+  console.info(p.constuctor)
+
+  p.sing()
+  p.movie()
+  
+</script>
+</body>
+</html>
