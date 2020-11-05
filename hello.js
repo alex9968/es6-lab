@@ -1,15 +1,48 @@
-let sy = Symbol("key1");
-let syObject = {};
-syObject[sy] = "kk";
-console.log(syObject);    // {Symbol(key1): "kk"}
+function Person(name) {
+  this.name = name
+
+  this.say = () => {
+    console.log("my name is", this.name)
+  }
+}
+Person.prototype.toString = () => {
+  console.log("Person toString")
+}
+
+function BigPerson() {
+  this.obj = Person
+  this.obj('alex')
+  delete this.obj
+
+  this.say = () => {
+    console.log("I am Working")
+  }
+}
+
+BigPerson.prototype = Object.create(Person.prototype)
+BigPerson.prototype.constructor = BigPerson//借鸡下蛋，假装是自己的
+
+BigPerson.prototype.toString = () => {
+  console.log("BigPerson toString")
+}
 
 
-var myMap = new Map();
-var keyObj = {}
-myMap.set(keyObj, "value");
-myMap.get(keyObj); // "和键 keyObj 关联的值"
-myMap.get({}); // undefined, 因为 keyObj !== {}
-console.info("myMap", myMap)
 
+
+
+
+
+const alex = new BigPerson()
+alex.name // => alex
+alex.say() // => my name is alex
+//alex.say2()
+alex.toString()
+
+function P2() {
+  constructor() {
+    this.name = 'name'
+  }
+  this.age = 23
+}
 
 
